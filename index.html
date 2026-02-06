@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINTURE 勤能轉運 - 遊戲說明書</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft JhengHei", "Noto Sans TC", Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        /* 主容器 */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 語言切換器 */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            padding: 8px 15px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: #6a1b9a;
+        }
+        
+        /* 頂部橫幅 */
+        .header {
+            background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '<img src="icons/crown-40.png" ...>';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -20px;
+            left: 50px;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .game-info-box {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        /* 導覽列 */
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #6a1b9a;
+            overflow-x: auto;
+        }
+        
+        .nav-tabs button {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px;
+        }
+        
+        .nav-tabs button:hover {
+            background: #e9ecef;
+            color: #6a1b9a;
+        }
+        
+        .nav-tabs button.active {
+            color: #6a1b9a;
+            border-bottom-color: #6a1b9a;
+            background: white;
+        }
+        
+        /* 主要內容 */
+        .main-content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 章節標題 */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #6a1b9a;
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #6a1b9a;
+        }
+        
+        .section h3 {
+            color: #4a148c;
+            font-size: 24px;
+            margin: 25px 0 15px;
+        }
+        
+        .section h4 {
+            color: #555;
+            font-size: 20px;
+            margin: 20px 0 10px;
+        }
+        
+        /* 卡牌展示 */
+        .card-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .game-card {
+            background: white;
+            border: 2px solid #6a1b9a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(106, 27, 154, 0.3);
+        }
+        
+        .game-card .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .game-card h4 {
+            color: #6a1b9a;
+            margin: 10px 0;
+        }
+        
+        /* 技能圖示 */
+        .skill-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #6a1b9a;
+            color: white;
+            vertical-align: middle;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        /* 圖示容器 */
+        .icon-container {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #6a1b9a;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+        
+        /* 步驟列表 */
+        .steps-list {
+            counter-reset: step-counter;
+        }
+        
+        .step-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #dee2e6;
+        }
+        
+        .step-item:last-child {
+            border-bottom: none;
+        }
+        
+        .step-item::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: #6a1b9a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        /* 警告框 */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-info {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #0d47a1;
+        }
+        
+        .alert-warning {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #e65100;
+        }
+        
+        .alert-success {
+            background: #e8f5e9;
+            border-color: #4caf50;
+            color: #1b5e20;
+        }
+        
+        /* 表格 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        table th {
+            background: #6a1b9a;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* 角色卡片 */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .character-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .character-card h4 {
+            color: #6a1b9a;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .character-card .quote {
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        /* 列表樣式 */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* 強調文字 */
+        .highlight {
+            background: #fff9c4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .purple-text {
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 968px) {
+            .main-content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .language-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+        
+        /* 返回頂部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #6a1b9a;
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(106, 27, 154, 0.4);
+            transition: all 0.3s;
+            font-size: 24px;
+            z-index: 1000;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(106, 27, 154, 0.6);
+        }
+        
+        /* 隱藏非當前語言的內容 */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 頂部橫幅 -->
+        <div class="header">
+            <!-- 語言切換器 -->
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="switchLanguage('zh')" data-lang="zh">中文</button>
+                <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">English</button>
+                <button class="lang-btn" onclick="switchLanguage('ja')" data-lang="ja">日本語</button>
+            </div>
+            
+            <h1><img src="icons/crown-40.png" ...> KINTURE <span class="lang-content active" data-lang="zh">勤能轉運</span><span class="lang-content" data-lang="en">Fate Weaver</span><span class="lang-content" data-lang="ja">運命転輪</span></h1>
+            <div class="subtitle lang-content active" data-lang="zh">出牌改命 - 桌上遊戲說明書</div>
+            <div class="subtitle lang-content" data-lang="en">Change Your Fate - Board Game Manual</div>
+            <div class="subtitle lang-content" data-lang="ja">運命を変える - ボードゲーム説明書</div>
+            
+            <div class="game-info-box">
+                <div class="info-item">
+                    <span class="lang-content active" data-lang="zh">👥 玩家：3-5 人</span>
+                    <span class="lang-content" data-lang="en">👥 Players: 3-5</span>
+                    <span class="lang-content" data-lang="ja">👥 プレイヤー：3-5人</span>
+                </div>
+                <div class="info-item">
+                    <span class="lang-content active" data-lang="zh">🎂 年齡：10+</span>
+                    <span class="lang-content" data-lang="en">🎂 Age: 10+</span>
+                    <span class="lang-content" data-lang="ja">🎂 年齢：10歳以上</span>
+                </div>
+                <div class="info-item">
+                    <span class="lang-content active" data-lang="zh">⏱️ 時間：15-25 分鐘</span>
+                    <span class="lang-content" data-lang="en">⏱️ Time: 15-25 min</span>
+                    <span class="lang-content" data-lang="ja">⏱️ 時間：15-25分</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 導覽標籤 -->
+        <div class="nav-tabs">
+
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('intro')">🎮 遊戲介紹</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('intro')">🎮 Introduction</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('intro')">🎮 ゲーム紹介</button>
+            </div>
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('setup')">⚙️ 遊戲設置</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('setup')">⚙️ Setup</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('setup')">⚙️ セットアップ</button>
+            </div>
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('flow')">📋 遊戲流程</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('flow')">📋 Game Flow</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('flow')">📋 ゲーム流れ</button>
+            </div>
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> 卡牌說明</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> Cards</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> カード説明</button>
+            </div>
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> 技能範例</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> Skill Examples</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> スキル例</button>
+            </div>
+            <div class="info-item"style="display: contents;">
+                <button class="lang-content active" data-lang="zh"onclick="showTab('characters')">👤 角色介紹</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('characters')">👤 Characters</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('characters')">👤 キャラクター</button>
+            </div>
+        
+
+            <!-- 中文導覽 -->
+            <!-- <div class="info-item"style="display: contents;">
+                <button class="tab-btn active" onclick="showTab('intro')">🎮 遊戲介紹</button>
+                <button class="tab-btn" onclick="showTab('flow')">📋 遊戲流程</button>
+                <button class="tab-btn" onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> 卡牌說明</button>
+                <button class="tab-btn" onclick="showTab('characters')">👤 角色介紹</button>
+                <button class="tab-btn" onclick="showTab('setup')">⚙️ 遊戲設置</button>
+            </div> -->
+            
+            <!-- 英文導覽 -->
+            <!-- <div class="lang-content" data-lang="en" style="display: contents;">
+                <button class="tab-btn active" onclick="showTab('intro')">🎮 Introduction</button>
+                <button class="tab-btn" onclick="showTab('flow')">📋 Game Flow</button>
+                <button class="tab-btn" onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> Cards</button>
+                <button class="tab-btn" onclick="showTab('characters')">👤 Characters</button>
+                <button class="tab-btn" onclick="showTab('setup')">⚙️ Setup</button>
+            </div> -->
+            
+            <!-- 日文導覽 -->
+            <!-- <div class="lang-content" data-lang="ja" style="display: contents;">
+                <button class="tab-btn active" onclick="showTab('intro')">🎮 ゲーム紹介</button>
+                <button class="tab-btn" onclick="showTab('flow')">📋 ゲーム流れ</button>
+                <button class="tab-btn" onclick="showTab('cards')"><img src="icons/jester-hat-40.png" ...> カード説明</button>
+                <button class="tab-btn" onclick="showTab('characters')">👤 キャラクター</button>
+                <button class="tab-btn" onclick="showTab('setup')">⚙️ セットアップ</button>
+            </div> -->
+        </div>
+        
+        <!-- 主要內容 -->
+        <div class="main-content">
+            <!-- 遊戲介紹 -->
+            <div id="intro" class="tab-content active">
+                <!-- 中文內容 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2>🎲 遊戲發想</h2>
+                        <p>你是藏命者，引導勢力收集運氣。</p>
+                        <p>你與競爭者於一個祝禱，源自未來掌管的四片葉子。</p>
+                        <p>事件線不可逆，你無法改寫事件。</p>
+                        <p><strong class="purple-text">只能在事件線中串連最多祝福，為你的勢力取得最多祝福。</strong></p>
+                        
+                        <div class="alert alert-info">
+                            <strong>💡 遊戲目標：</strong> 請你成為最有力的藏命者，為你指定的勢力收集最多的運氣（Luck），遊戲結束時最高分者獲勝！
+                        </div>
+                    </section>
+                    
+                    <section class="section">
+                        <h2>📦 遊戲配件</h2>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/fan-40.png" ...></div>
+                                <h4>分數追蹤卡</h4>
+                                <p>× 5 張</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/icon-lightning-40.png" ...></div>
+                                <h4>勢力卡</h4>
+                                <p>× 5 張</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎯</div>
+                                <h4>跑分指示物</h4>
+                                <p>× 5 個</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎊</div>
+                                <h4>祝福指示物</h4>
+                                <p>× 15 個</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/jester-hat-40.png" ...></div>
+                                <h4>遊戲卡牌</h4>
+                                <p>Base × 15 張<br>Advanced × 15 張<br>Promo × 15 張</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 英文內容 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2>🎲 Game Concept</h2>
+                        <p>You are a Fate Weaver, guiding factions to collect luck.</p>
+                        <p>You compete with others in a prayer, originated from the four-leaf clover controlling the future.</p>
+                        <p>The event timeline is irreversible, you cannot rewrite events.</p>
+                        <p><strong class="purple-text">You can only connect the most blessings in the event line to gain the most blessings for your faction.</strong></p>
+                        
+                        <div class="alert alert-info">
+                            <strong>💡 Game Objective:</strong> Become the most powerful Fate Weaver, collect the most Luck for your designated faction. The highest scorer wins when the game ends!
+                        </div>
+                    </section>
+                    
+                    <section class="section">
+                        <h2>📦 Game Components</h2>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/fan-40.png" ...></div>
+                                <h4>Score Tracker Cards</h4>
+                                <p>× 5</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/icon-lightning-40.png" ...></div>
+                                <h4>Faction Cards</h4>
+                                <p>× 5</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎯</div>
+                                <h4>Score Markers</h4>
+                                <p>× 5</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎊</div>
+                                <h4>Blessing Tokens</h4>
+                                <p>× 15</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/jester-hat-40.png" ...></div>
+                                <h4>Game Cards</h4>
+                                <p>Base × 15<br>Advanced × 15<br>Promo × 15</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 日文內容 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2>🎲 ゲームコンセプト</h2>
+                        <p>あなたは運命の織り手であり、勢力を導いて運を集めます。</p>
+                        <p>未来を司る四つ葉のクローバーに由来する祈りの中で、他者と競います。</p>
+                        <p>イベントラインは不可逆であり、イベントを書き換えることはできません。</p>
+                        <p><strong class="purple-text">イベントラインの中で最も多くの祝福を繋ぎ、あなたの勢力に最も多くの祝福を得ることができるだけです。</strong></p>
+                        
+                        <div class="alert alert-info">
+                            <strong>💡 ゲーム目標：</strong> 最も強力な運命の織り手となり、指定された勢力のために最も多くの運（Luck）を集めてください。ゲーム終了時に最高得点者が勝利します！
+                        </div>
+                    </section>
+                    
+                    <section class="section">
+                        <h2>📦 ゲームコンポーネント</h2>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/fan-40.png" ...></div>
+                                <h4>スコアトラッカー</h4>
+                                <p>× 5枚</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/icon-lightning-40.png" ...></div>
+                                <h4>勢力カード</h4>
+                                <p>× 5枚</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎯</div>
+                                <h4>スコアマーカー</h4>
+                                <p>× 5個</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon">🎊</div>
+                                <h4>祝福トークン</h4>
+                                <p>× 15個</p>
+                            </div>
+                            <div class="game-card">
+                                <div class="icon"><img src="icons/jester-hat-40.png" ...></div>
+                                <h4>ゲームカード</h4>
+                                <p>基本 × 15枚<br>上級 × 15枚<br>プロモ × 15枚</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- 遊戲設置 -->
+            <div id="setup" class="tab-content">
+                <!-- 中文內容 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2>⚙️ 遊戲設置</h2>
+                        <div class="alert alert-info">
+                            <strong>📦 遊戲配置：</strong>
+                            <ul style="margin: 10px 0 0 20px;">
+                                <li>每場有 9 個角色（7 張卡）</li>
+                                <li>特殊卡打出時擇 1 面使用</li>
+                            </ul>
+                        </div>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h4>確定起始玩家</h4>
+                                <p>最近去算命的為起始玩家</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>發放配件</h4>
+                                <p>桌布、分數追蹤卡展開、跑分指示物全部放在 1 祝福位置</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>分配卡牌</h4>
+                                <p>將進階卡跟基本卡 25 張卡牌洗勻發給玩家</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 英文內容 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2>⚙️ Game Setup</h2>
+                        <div class="alert alert-info">
+                            <strong>📦 Game Configuration:</strong>
+                            <ul style="margin: 10px 0 0 20px;">
+                                <li>9 characters per game (7 cards)</li>
+                                <li>Choose 1 side when playing special cards</li>
+                            </ul>
+                        </div>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h4>Determine Starting Player</h4>
+                                <p>The player who most recently had their fortune told starts</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>Distribute Components</h4>
+                                <p>Layout game mat, score tracker cards, place all score markers at 1 blessing position</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>Deal Cards</h4>
+                                <p>Shuffle and deal 25 cards (Advanced + Base) to players</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 日文內容 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2>⚙️ ゲームセットアップ</h2>
+                        <div class="alert alert-info">
+                            <strong>📦 ゲーム構成：</strong>
+                            <ul style="margin: 10px 0 0 20px;">
+                                <li>各ゲーム9キャラクター（7枚のカード）</li>
+                                <li>特殊カードをプレイする際は1面を選択</li>
+                            </ul>
+                        </div>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h4>スタートプレイヤーの決定</h4>
+                                <p>最近占いをした人がスタートプレイヤーになります</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>コンポーネント配布</h4>
+                                <p>ゲームマット、スコアトラッカーカードを配置、すべてのマーカーを1祝福位置に置く</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>カード配布</h4>
+                                <p>上級カードと基本カード25枚をシャッフルしてプレイヤーに配る</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- 遊戲流程 -->
+            <div id="flow" class="tab-content">
+                <!-- 中文內容 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2>🎮 遊戲流程</h2>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h3>打出卡牌</h3>
+                                <p>打出一張卡牌至場上空格，若有打出技能，執行打出技能</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>執行事件</h3>
+                                <p>由該玩家，依序執行卡牌事件線技能</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>檢查勝負</h3>
+                                <p>完成規定輸次或場上空格填滿，遊戲結束計算總分</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 英文內容 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2>🎮 Game Flow</h2>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h3>Play a Card</h3>
+                                <p>Play a card to an empty space on the board. If it has a play ability, execute it</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>Execute Events</h3>
+                                <p>The player executes the event line abilities in order</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>Check Victory</h3>
+                                <p>Complete the required rounds or fill the board. Game ends and calculate total score</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 日文內容 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2>🎮 ゲームの流れ</h2>
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <h3>カードをプレイ</h3>
+                                <p>ボード上の空きスペースにカードをプレイします。プレイ能力がある場合は実行します</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>イベント実行</h3>
+                                <p>プレイヤーは順番にイベントライン能力を実行します</p>
+                            </div>
+                            <div class="step-item">
+                                <h3>勝敗確認</h3>
+                                <p>規定のラウンドを完了するか、ボードを埋めます。ゲーム終了し、合計スコアを計算します</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- 卡牌說明頁 -->
+            <div id="cards" class="tab-content">
+                <!-- 中文版卡牌說明 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2><img src="icons/jester-hat-40.png" ...> 完整卡牌說明</h2>
+                        <div class="alert alert-info">
+                            <strong>📌 重要規則：</strong>
+                            <ul style="margin-top: 20px; margin-bottom: 0;">
+                                <li>打出技能 <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 由打出卡的玩家執行</li>
+                                <li>事件線技能 <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     由觸發事件線玩家執行</li>
+                                <li>事件線技能順序：(A卡 → 貴族 → 平民 → 守衛 → 強盜 → P卡)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3><img src="icons/fan-40.png" ...> Base 卡（4張全選）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">卡牌</th>
+                                <th>技能說明</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/victory-badge-40.png" ...> 貴族</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(5-N) Luck，N = 事件線中包含的貴族張數
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/basket-40.png" ...> 平民</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(1+N) Luck，N = 事件線中包含的平民張數
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/spear-shield-40.png" ...> 守衛</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    若守衛張數 ≥ 強盜時則移除事件線中的強盜；+3N Luck，N = 移除的強盜數量
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/sword-40.png" ...> 強盜</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    若強盜張數 > 守衛時，則移除事件線中的守衛、貴族、平民；+2N Luck，N = 移除的守衛、貴族、平民總數
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🌟 Advanced 卡（3張選1張）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">卡牌</th>
+                                <th>技能說明</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/potion-40.png" ...> 祭司</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「感化」場上1張未感化角色為同色；祭司橫置於其旁，該牌離場時祭司牌移除
+                                    <div class="alert alert-warning" style="margin-top: 10px;">
+                                        ⚠️ 祭司不可被感化
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/magic-wand-40.png" ...> 魔術師</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「調移」場上1張牌至魔術師位置執行技能，魔術師移除並 +2 Luck
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/fan-40.png" ...> 詐欺師</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「偽裝」成場上任意角色，並結算該角色技能後移除
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>⭐ Promo 卡（必選）王族&傀儡師</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">卡牌</th>
+                                <th>技能說明</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/crown-40.png" ...> 王族</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    出牌時，<span class="highlight">必須</span>「加冕」場上一張非貴族卡，使其成為貴族。王族牌置於其旁，該牌離場時王族牌移除
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/puppet-40.png" ...> 傀儡師</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span>
+                                    出牌時，<span class="highlight">必須</span>「替換」場上一張非傀儡師卡，並 +2 Luck；被替換卡牌回到持有玩家手牌
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🎊 Promo 卡（3張選1張）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 150px;">卡牌</th>
+                                <th>技能說明</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/robot-40.png" ...> AI 機器人</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +2N Luck，之後移除，N = 場上的同色卡數量
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/jester-hat-40.png" ...> 小丑</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +N Luck，之後移除，N = 場上的不同角色種類數量
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/male-heart-40.png" ...> 戀人男<br><img src="icons/female-heart-40.png" ...> 戀人女</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「配對」場上的角色牌後雙方移除且各 +5 Luck，並從移除區抽 1 張卡牌
+                                    <div class="alert alert-info" style="margin-top: 10px;">
+                                        💡 未執行技能，則不會移除
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/butterfly-mask-40.png" ...> 精靈</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    移除場上 1 張惡魔，若執行 +3Luck。<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> 事件線中的角色 LUCK +2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/demon-wings-40.png" ...> 惡魔</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    移除場上 1 張精靈，若執行 +3Luck。<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> 事件線中的角色 LUCK -1
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+                
+                <!-- 英文版卡牌說明 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2><img src="icons/jester-hat-40.png" ...> Complete Card Description</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📌 Important Rules:</strong>
+                            <ul style="margin-top: 10px; margin-bottom: 0;">
+                                <li>Play abilities <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> are executed by the player who plays the card</li>
+                                <li>Event line abilities <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     are executed by the triggering player</li>
+                                <li>Event line order: (A-cards → Noble → Commoner → Guard → Bandit → P-cards)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3><img src="icons/fan-40.png" ...> Base Cards (All 4 Required)</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">Card</th>
+                                <th>Ability</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/victory-badge-40.png" ...> Noble</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(5-N) Luck, N = Number of Nobles in event line
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/basket-40.png" ...> Commoner</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(1+N) Luck, N = Number of Commoners in event line
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/spear-shield-40.png" ...> Guard</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    If Guards ≥ Bandits, remove Bandits from event line; +3N Luck, N = removed Bandits
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/sword-40.png" ...> Bandit</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    If Bandits > Guards, remove Guards, Nobles, Commoners; +2N Luck, N = total removed
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🌟 Advanced Cards (Choose 1 of 3)</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">Card</th>
+                                <th>Ability</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/potion-40.png" ...> Priest</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    "Convert" 1 unconverted card to same color; Place Priest beside it, remove when that card leaves
+                                    <div class="alert alert-warning" style="margin-top: 10px;">
+                                        ⚠️ Priest cannot be converted
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/magic-wand-40.png" ...> Magician</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    "Teleport" 1 card to Magician's position to execute ability, remove Magician and +2 Luck
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/fan-40.png" ...> Swindler</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    "Disguise" as any character, resolve that character's ability then remove
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>⭐ Promo Cards (Both Required) Royalty & Puppeteer</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">Card</th>
+                                <th>Ability</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/crown-40.png" ...> Royalty</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    When played, <span class="highlight">must</span> "Crown" 1 non-Noble card to become Noble. Place Royalty beside it, remove when that card leaves
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/puppet-40.png" ...> Puppeteer</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span>
+                                    When played, <span class="highlight">must</span> "Swap" 1 non-Puppeteer card and +2 Luck; Swapped card returns to owner's hand
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🎊 Promo Cards (Choose 1 of 3)</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 150px;">Card</th>
+                                <th>Ability</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/robot-40.png" ...> AI Robot</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +2N Luck, then remove, N = number of same-colored cards on board
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/jester-hat-40.png" ...> Jester</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +N Luck, then remove, N = number of different character types on board
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/male-heart-40.png" ...> Lover (Male)<br><img src="icons/female-heart-40.png" ...> Lover (Female)</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    "Pair" with a character card, both remove and each gets +5 Luck, draw 1 card from removed pile
+                                    <div class="alert alert-info" style="margin-top: 10px;">
+                                        💡 If ability not executed, will not be removed
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/butterfly-mask-40.png" ...> Fairy</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    Remove 1 Demon on board, if executed +3Luck.<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> Characters in event line get LUCK +2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/demon-wings-40.png" ...> Demon</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    Remove 1 Fairy on board, if executed +3Luck.<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> Characters in event line get LUCK -1
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+                
+                <!-- 日文版卡牌說明 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2><img src="icons/jester-hat-40.png" ...> 完全なカード説明</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📌 重要なルール：</strong>
+                            <ul style="margin-top: 10px; margin-bottom: 0;">
+                                <li>プレイ能力 <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> はカードをプレイしたプレイヤーが実行</li>
+                                <li>イベントライン能力 <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     はトリガープレイヤーが実行</li>
+                                <li>イベントライン順序：(Aカード → 貴族 → 平民 → 守衛 → 盗賊 → Pカード)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3><img src="icons/fan-40.png" ...> 基本カード（4枚すべて必須）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">カード</th>
+                                <th>能力</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/victory-badge-40.png" ...> 貴族</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(5-N) Luck、N = イベントライン内の貴族の枚数
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/basket-40.png" ...> 平民</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    +(1+N) Luck、N = イベントライン内の平民の枚数
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/spear-shield-40.png" ...> 守衛</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    守衛 ≥ 盗賊の場合、イベントラインから盗賊を除去；+3N Luck、N = 除去された盗賊
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/sword-40.png" ...> 盗賊</strong></td>
+                                <td>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span>
+                                    盗賊 > 守衛の場合、守衛、貴族、平民を除去；+2N Luck、N = 合計除去数
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🌟 上級カード（3枚から1枚選択）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">カード</th>
+                                <th>能力</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/potion-40.png" ...> 司祭</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「感化」未感化のカード1枚を同じ色に；司祭をその横に配置、そのカードが離れると司祭も除去
+                                    <div class="alert alert-warning" style="margin-top: 10px;">
+                                        ⚠️ 司祭は感化できない
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/magic-wand-40.png" ...> 魔術師</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「移動」カード1枚を魔術師の位置に移動して能力実行、魔術師除去して +2 Luck
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/fan-40.png" ...> 詐欺師</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「変装」任意のキャラクターに変装、そのキャラクターの能力を解決後除去
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>⭐ プロモカード（両方必須）王族＆操り人形師</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 120px;">カード</th>
+                                <th>能力</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/crown-40.png" ...> 王族</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 
+                                    プレイ時、<span class="highlight">必ず</span>「戴冠」貴族でないカード1枚を貴族にする。王族をその横に配置、そのカードが離れると除去
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/puppet-40.png" ...> 操り人形師</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span>
+                                    プレイ時、<span class="highlight">必ず</span>「交換」操り人形師でないカード1枚と交換して +2 Luck；交換されたカードは所有者の手札に戻る
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <h3>🎊 プロモカード（3枚から1枚選択）</h3>
+                        <table>
+                            <tr>
+                                <th style="width: 150px;">カード</th>
+                                <th>能力</th>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/robot-40.png" ...> AIロボット</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +2N Luck、その後除去、N = ボード上の同色カード数
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/jester-hat-40.png" ...> 道化師</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    +N Luck、その後除去、N = ボード上の異なるキャラクタータイプ数
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/male-heart-40.png" ...> 恋人（男性）<br><img src="icons/female-heart-40.png" ...> 恋人（女性）</strong></td>
+                                <td>
+                                    <span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                    「ペアリング」キャラクターカードとペアを組み、両方除去して各 +5 Luck、除去されたパイルから1枚引く
+                                    <div class="alert alert-info" style="margin-top: 10px;">
+                                        💡 能力が実行されない場合、除去されない
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/butterfly-mask-40.png" ...> 妖精</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...>
+                                    ボード上の悪魔1枚を除去、実行した場合 +3Luck。<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> イベントライン内のキャラクターは LUCK +2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><img src="icons/demon-wings-40.png" ...> 悪魔</strong></td>
+                                <td>
+                                    <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...>
+                                    ボード上の妖精1枚を除去、実行した場合 +3Luck。<br>
+                                    <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span> イベントライン内のキャラクターは LUCK -1
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+            </div>
+            
+            <!-- 角色介紹頁（完整版15個角色） -->
+            <div id="characters" class="tab-content">
+                <!-- 中文版角色介紹 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2>👥 角色風味文（完整15角色）</h2>
+                        <p style="margin-bottom: 30px;">每個角色都有其獨特的背景故事和台詞！</p>
+                        
+                        <div class="character-grid">
+                            <div class="character-card">
+                                <h4><img src="icons/victory-badge-40.png" ...> 貴族</h4>
+                                <div class="quote">「高貴從不來自血統，而是你站穩風暴的方式。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/basket-40.png" ...> 平民</h4>
+                                <div class="quote">「陽光灑在哪，哪裡就是我種下希望的地方。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/spear-shield-40.png" ...> 守衛</h4>
+                                <div class="quote">「我不是牆，但我會是你最後一道防線。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/sword-40.png" ...> 強盜</h4>
+                                <div class="quote">「我不偷命，只偷選錯路的時機。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/potion-40.png" ...> 祭司</h4>
+                                <div class="quote">「沉默之中，神明才願回答。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/magic-wand-40.png" ...> 魔術師</h4>
+                                <div class="quote">「魔法不是騙術，是你選擇相信的不可能。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/fan-40.png" ...> 詐欺師</h4>
+                                <div class="quote">「沉默之中，神明才願回答。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/crown-40.png" ...> 王族</h4>
+                                <div class="quote">「命運不容挑戰，因為我即是命運。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/puppet-40.png" ...> 傀儡師</h4>
+                                <div class="quote">「誰說被線牽引的人，就不能掌聲雷動？」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/robot-40.png" ...> AI 機器人</h4>
+                                <div class="quote">「我思故我算，我算故我在。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/jester-hat-40.png" ...> 小丑</h4>
+                                <div class="quote">「我戴著鈴鐺，只因世界太無趣，不值得靜靜走過。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/male-heart-40.png" ...> 戀人男</h4>
+                                <div class="quote">「我不會說愛，但我願等你讀懂每一行字的停頓。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/female-heart-40.png" ...> 戀人女</h4>
+                                <div class="quote">「你沒回頭，我卻學會了等待的全部意義。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/butterfly-mask-40.png" ...> 精靈</h4>
+                                <div class="quote">「水和萬語，卻只願靜靜流動。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/demon-wings-40.png" ...> 惡魔</h4>
+                                <div class="quote">「我的火焰不燒盡萬物，只燃盡謊言。」</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 英文版角色介紹 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2>👥 Character Flavor Text (Complete 15 Characters)</h2>
+                        <p style="margin-bottom: 30px;">Each character has their unique backstory and quotes!</p>
+                        
+                        <div class="character-grid">
+                            <div class="character-card">
+                                <h4><img src="icons/victory-badge-40.png" ...> Noble</h4>
+                                <div class="quote">"Nobility comes not from bloodline, but from how you stand firm in the storm."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/basket-40.png" ...> Commoner</h4>
+                                <div class="quote">"Wherever the sunlight falls, that's where I plant hope."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/spear-shield-40.png" ...> Guard</h4>
+                                <div class="quote">"I'm not a wall, but I'll be your last line of defense."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/sword-40.png" ...> Bandit</h4>
+                                <div class="quote">"I don't steal lives, only the timing of wrong paths."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/potion-40.png" ...> Priest</h4>
+                                <div class="quote">"In silence, the divine chooses to answer."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/magic-wand-40.png" ...> Magician</h4>
+                                <div class="quote">"Magic isn't deception, it's the impossible you choose to believe."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/fan-40.png" ...> Swindler</h4>
+                                <div class="quote">"In silence, the divine chooses to answer."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/crown-40.png" ...> Royalty</h4>
+                                <div class="quote">"Fate cannot be challenged, for I am fate itself."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/puppet-40.png" ...> Puppeteer</h4>
+                                <div class="quote">"Who says those pulled by strings can't earn thunderous applause<img src="icons/icon-key-40.png" ...>"</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/robot-40.png" ...> AI Robot</h4>
+                                <div class="quote">"I think therefore I compute, I compute therefore I am."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/jester-hat-40.png" ...> Jester</h4>
+                                <div class="quote">"I wear bells because the world's too dull to pass through quietly."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/male-heart-40.png" ...> Lover (Male)</h4>
+                                <div class="quote">"I won't speak of love, but I'll wait for you to read every pause between the lines."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/female-heart-40.png" ...> Lover (Female)</h4>
+                                <div class="quote">"You didn't look back, yet I learned the full meaning of waiting."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/butterfly-mask-40.png" ...> Fairy</h4>
+                                <div class="quote">"Water and countless words, yet I choose only to flow silently."</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/demon-wings-40.png" ...> Demon</h4>
+                                <div class="quote">"My flames don't burn all things, only lies."</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 日文版角色介紹 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2>👥 キャラクターフレーバーテキスト（完全15キャラクター）</h2>
+                        <p style="margin-bottom: 30px;">各キャラクターには独自の背景ストーリーとセリフがあります！</p>
+                        
+                        <div class="character-grid">
+                            <div class="character-card">
+                                <h4><img src="icons/victory-badge-40.png" ...> 貴族</h4>
+                                <div class="quote">「高貴さは血統からではなく、嵐の中でどう立つかから生まれる。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/basket-40.png" ...> 平民</h4>
+                                <div class="quote">「日光が降り注ぐところ、そこが希望を植える場所。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/spear-shield-40.png" ...> 守衛</h4>
+                                <div class="quote">「私は壁ではないが、あなたの最後の防衛線になる。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/sword-40.png" ...> 盗賊</h4>
+                                <div class="quote">「私は命を盗まない、間違った道のタイミングだけを盗む。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/potion-40.png" ...> 司祭</h4>
+                                <div class="quote">「沈黙の中で、神は答えを選ぶ。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/magic-wand-40.png" ...> 魔術師</h4>
+                                <div class="quote">「魔法は詐欺ではなく、あなたが信じることを選んだ不可能。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/fan-40.png" ...> 詐欺師</h4>
+                                <div class="quote">「沈黙の中で、神は答えを選ぶ。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/crown-40.png" ...> 王族</h4>
+                                <div class="quote">「運命は挑戦を許さない、なぜなら私が運命そのものだから。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/puppet-40.png" ...> 操り人形師</h4>
+                                <div class="quote">「糸に引かれる者が雷鳴のような拍手を得られないと誰が言った？」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/robot-40.png" ...> AIロボット</h4>
+                                <div class="quote">「我思う故に我計算する、我計算する故に我あり。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/jester-hat-40.png" ...> 道化師</h4>
+                                <div class="quote">「鈴をつけるのは、世界があまりに退屈で静かに通り過ぎる価値がないから。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/male-heart-40.png" ...> 恋人（男性）</h4>
+                                <div class="quote">「愛を語ることはしないが、あなたが行間のすべての停止を読むのを待つ。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/female-heart-40.png" ...> 恋人（女性）</h4>
+                                <div class="quote">「あなたは振り返らなかったが、私は待つことの全ての意味を学んだ。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/butterfly-mask-40.png" ...> 妖精</h4>
+                                <div class="quote">「水と無数の言葉、しかし静かに流れることだけを選ぶ。」</div>
+                            </div>
+                            
+                            <div class="character-card">
+                                <h4><img src="icons/demon-wings-40.png" ...> 悪魔</h4>
+                                <div class="quote">「私の炎はすべてを焼き尽くさない、嘘だけを焼き尽くす。」</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 返回頂部按鈕 -->
+    <div class="back-to-top" onclick="scrollToTop()">↑</div>
+    
+    <script>
+        // 當前語言
+        let currentLang = 'zh';
+        
+        // 語言切換功能
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // 更新語言按鈕狀態
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // 隱藏所有語言內容
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 顯示選中語言的內容
+            document.querySelectorAll(`.lang-content[data-lang="${lang}"]`).forEach(content => {
+                content.classList.add('active');
+            });
+            
+            // 更新 HTML lang 屬性
+            if (lang === 'zh') {
+                document.documentElement.lang = 'zh-TW';
+            } else if (lang === 'en') {
+                document.documentElement.lang = 'en';
+            } else if (lang === 'ja') {
+                document.documentElement.lang = 'ja';
+            }
+            
+            // 滾動到頂部
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        // 分頁切換功能
+        function showTab(tabId) {
+            // 隱藏所有分頁內容
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // 移除所有按鈕的 active 狀態
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 顯示選中的分頁
+            document.getElementById(tabId).classList.add('active');
+            
+            // 設定對應按鈕為 active
+            event.target.classList.add('active');
+            
+            // 滾動到頂部
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+        
+        // 返回頂部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 顯示/隱藏返回頂部按鈕
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // 平滑滾動到錨點
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
