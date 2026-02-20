@@ -100,8 +100,8 @@
         }
         
         .header::before {
-            content: '<img src="icons/crown-40.png" ...>';
-            position: absolute;
+            /* content: 
+            position: absolute; */
             font-size: 150px;
             opacity: 0.1;
             top: -20px;
@@ -525,9 +525,9 @@
                 <button class="lang-content" data-lang="ja"onclick="showTab('cards')">🎮 カード説明</button>
             </div>
             <div class="info-item"style="display: contents;">
-                <button class="lang-content active" data-lang="zh"onclick="showTab('cards')">🎯 技能範例</button>
-                <button class="lang-content" data-lang="en"onclick="showTab('cards')">🎯 Skill Examples</button>
-                <button class="lang-content" data-lang="ja"onclick="showTab('cards')">🎯 スキル例</button>
+                <button class="lang-content active" data-lang="zh"onclick="showTab('exp')">🎯 技能範例</button>
+                <button class="lang-content" data-lang="en"onclick="showTab('exp')">🎯 Skill Examples</button>
+                <button class="lang-content" data-lang="ja"onclick="showTab('exp')">🎯 スキル例</button>
             </div>
             <div class="info-item"style="display: contents;">
                 <button class="lang-content active" data-lang="zh"onclick="showTab('characters')">👤 風味文</button>
@@ -852,7 +852,8 @@
                                     class="zoomable-image" 
                                     onclick="this.classList.toggle('zoomed')">
                                 </div>
-                                <h4>祭司 魔術師 詐欺師</h4>
+                                <h4>祭司 魔術師 詐欺師
+                                </h4>
                             </div>
                             <div class="game-card">
                                 <div class="image-container">
@@ -1099,18 +1100,26 @@
                             </div>
                             <div class="step-item">
                                 <h3>檢查勝負</h3>
-                                <p>完成規定輪次或場上空格填滿，遊戲結束計算總分</p>
+                                <p>規定輪次或場上空格填滿，遊戲結束計算總分，否則輪到下位玩家。</p>
+                            </div>
+                            <div class="game-card">
+                                <h3>範例為 3 人局</h3>
+                                <div class="image-container">
+                                <img src="icons/totel1.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="game-card">
-                            <div class="image-container">
-                            <img src="icons/set6.png" ... 
-                                class="zoomable-image" 
-                                onclick="this.classList.toggle('zoomed')">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/set6.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </section>
                 </div>
 
@@ -1130,18 +1139,26 @@
                             </div>
                             <div class="step-item">
                                 <h3>Check Victory</h3>
-                                <p>Complete the required rounds or fill the board. Game ends and calculate total score</p>
+                                <p> When the required number of rounds is completed or all Fieldslots are filled, the game ends and total scores are calculated. Otherwise, the next player takes their turn.</p>
                             </div>
+                            <div class="game-card">
+                                <h3>Example shows a 3-player game</h3>
+                                <div class="image-container">
+                                <img src="icons/totel2.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div> 
                         </div>
-                        
-                        <div class="game-card">
-                            <div class="image-container">
-                            <img src="icons/set7.png" ... 
-                                class="zoomable-image" 
-                                onclick="this.classList.toggle('zoomed')">
+
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/set7.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
                             </div>
-                        </div>
-                    </div>                        
+                        </div>                           
                     </section>
                 </div>
 
@@ -1161,7 +1178,15 @@
                             </div>
                             <div class="step-item">
                                 <h3>勝敗確認</h3>
-                                <p>規定のラウンドを完了するか、ボードを埋めます。ゲーム終了し、合計スコアを計算します</p>
+                                <p>規定のラウンド数が終了するか、またはフィールドのすべてのマスが埋まった場合、ゲームは終了し、合計得点を計算する。それ以外の場合、次のプレイヤーの手番となる。</p>
+                            </div>
+                            <div class="game-card">
+                                <h3>例は3人戦</h3>
+                                <div class="image-container">
+                                <img src="icons/totel3.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
                             </div>
                         </div>
                         
@@ -1195,7 +1220,7 @@
                         <h3>🎮 Base 卡（4張全選）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">卡牌</th>
+                                <th style="width: 260px;">卡牌</th>
                                 <th>技能</th>
                             </tr>
                             <tr>
@@ -1231,7 +1256,7 @@
                         <h3>🎮 Advanced 卡（3張選1張）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">卡牌</th>
+                                <th style="width: 260px;">卡牌</th>
                                 <th>技能</th>
                             </tr>
                             <tr>
@@ -1263,7 +1288,7 @@
                         <h3>🎮 Promo 卡（必選）王族&傀儡師</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">卡牌</th>
+                                <th style="width: 260px;">卡牌</th>
                                 <th>技能</th>
                             </tr>
                             <tr>
@@ -1285,7 +1310,7 @@
                         <h3>🎮 Promo 卡（3張選1張）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">卡牌</th>
+                                <th style="width: 260px;">卡牌</th>
                                 <th>技能</th>
                             </tr>
                             <tr>
@@ -1351,7 +1376,7 @@
                         <h3>🎮 Base Cards (Select all 4)</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">Card</th>
+                                <th style="width: 260px;">Card</th>
                                 <th>Skill</th>
                             </tr>
                             <tr>
@@ -1387,7 +1412,7 @@
                         <h3>🎮 Advanced Cards (Choose 1 of 3)</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">Card</th>
+                                <th style="width: 260px;">Card</th>
                                 <th>Skill</th>
                             </tr>
                             <tr>
@@ -1419,7 +1444,7 @@
                         <h3>🎮 Promo Cards (Mandatory) Royalty & Puppeteer</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">Card</th>
+                                <th style="width: 260px;">Card</th>
                                 <th>Skill</th>
                             </tr>
                             <tr>
@@ -1441,7 +1466,7 @@
                         <h3>🎮 Promo Cards (Choose 1 of 3)</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">Card</th>
+                                <th style="width: 260px;">Card</th>
                                 <th>Skill</th>
                             </tr>
                             <tr>
@@ -1507,7 +1532,7 @@
                         <h3>🎮 ベースカード（4枚すべて使用）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">カード</th>
+                                <th style="width: 260px;">カード</th>
                                 <th>スキル</th>
                             </tr>
                             <tr>
@@ -1543,7 +1568,7 @@
                         <h3>🎮 アドバンスカード（3枚から1枚を選ぶ）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">カード</th>
+                                <th style="width: 260px;">カード</th>
                                 <th>スキル</th>
                             </tr>
                             <tr>
@@ -1575,7 +1600,7 @@
                         <h3>🎮 プロモカード（必須）王族＆操り人形師</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">カード</th>
+                                <th style="width: 260px;">カード</th>
                                 <th>スキル</th>
                             </tr>
                             <tr>
@@ -1597,7 +1622,7 @@
                         <h3>🎮 プロモカード（3枚から1枚を選ぶ）</h3>
                         <table>
                             <tr>
-                                <th style="width: 300px;">カード</th>
+                                <th style="width: 260px;">カード</th>
                                 <th>スキル</th>
                             </tr>
                             <tr>
@@ -1647,7 +1672,1035 @@
                     </section>
                 </div>
             </div>
-            
+
+            <!-- 技能範例頁 -->
+            <div id="exp" class="tab-content">
+                <!-- 中文版技能範例 -->
+                <div class="lang-content active" data-lang="zh">
+                    <section class="section">
+                        <h2>🎯 技能範例</h2>
+                        <div class="alert alert-info">
+                            <strong>📌 重要規則：</strong>
+                            <ul style="margin-top: 20px; margin-bottom: 0;">
+                                <li>打出技能 <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> 由打出卡的玩家執行</li>
+                                <li>事件線技能 <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     由觸發事件線玩家執行</li>
+                                <li>事件線技能順序：(A卡 → 貴族 → 平民 → 守衛 → 強盜 → P卡)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>🎯 貴族。平民 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex1.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex51.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex2.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>🎯 守衛 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex3.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex52.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex4.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 強盜 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex5.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex53.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex6.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 祭司 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex7.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex54.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex8.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 魔術師 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex9.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex55.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex10.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 詐欺師 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex11.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex56.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex12.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 王族 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex13.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex57.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex14.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 傀儡師 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex15.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex58.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex16.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 AI機器人</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex17.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex59.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex18.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 小丑</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex19.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex60.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex20.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 戀人男女 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex21.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex61.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex22.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 精靈</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex23.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex62.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex24.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 惡魔</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex25.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex63.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex26.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 英文版技能範例 -->
+                <div class="lang-content" data-lang="en">
+                    <section class="section">
+                        <h2>🎮 Card Description</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📌 Important Rules:</strong>
+                            <ul style="margin-top: 10px; margin-bottom: 0;">
+                                <li>Play Skill <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> are executed by the player who plays the card</li>
+                                <li>Event Line Skill <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     are executed by the triggering player</li>
+                                <li>Event line order: (A-cards → Noble → Commoner → Guard → Bandit → P-cards)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>🎯 Noble。Commoner </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex1.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex64.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex2.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>🎯 Guard </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex3.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex65.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex4.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Bandit </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex5.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex66.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex6.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Priestess </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex7.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex67.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex8.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Magician </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex9.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex68.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex10.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Swindler </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex11.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex69.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex12.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Royalty </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex13.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex70.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex14.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Puppeteer </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex15.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex71.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex16.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 AI Robot</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex17.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex72.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex18.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Jester</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex19.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex73.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex20.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Lover  </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex21.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex74.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex22.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Elf </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex23.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex75.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex24.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 Demon </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex25.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex76.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex26.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+                <!-- 日文版技能範例 -->
+                <div class="lang-content" data-lang="ja">
+                    <section class="section">
+                        <h2>🎮 カード説明</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📌 重要なルール：</strong>
+                            <ul style="margin-top: 10px; margin-bottom: 0;">
+                                <li>出場スキル <span class="skill-icon"><img src="icons/icon-lightning-40.png" ...></span> はカードをプレイしたプレイヤーが実行</li>
+                                <li>事件線スキル <span class="skill-icon continuous"><img src="icons/icon-hourglass-40.png" ...></span><span class="skill-icon event"><img src="icons/icon-key-40.png" ...></span>
+                                     はトリガープレイヤーが実行</li>
+                                <li>事件線スキルの実行順序：(Aカード → 貴族 → 平民 → 守衛 → 盗賊 → Pカード)</li>
+                            </ul>
+                        </div>
+                        
+                        <h3>🎯 貴族（ノーブル） 。平民（コモナー） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex1.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex77.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex2.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>🎯 守衛（ガード） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex3.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex78.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex4.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 強盗（ロバーブ） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex5.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex79.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex6.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 祭司（プリーステス） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex7.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex80.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex8.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 魔術師（マジシャン） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex9.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex81.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex10.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 詐欺師（カウントレス） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex11.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex82.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex12.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 王族（キング） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex13.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex83.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex14.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 傀儡師（パペッティア） </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex15.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex84.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex16.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 AI機器人（AIロボット）</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex17.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex85.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex18.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 小丑（ジェスター）</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex19.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex86.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex20.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 恋人 </h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex21.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex87.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex22.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 精霊（エルフ）</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex23.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex88.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex24.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>🎯 悪魔（デーモン）</h3>
+                        <div class="card-showcase">
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex25.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex89.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                            <div class="game-card">
+                                <div class="image-container">
+                                <img src="icons/ex26.png" ... 
+                                    class="zoomable-image" 
+                                    onclick="this.classList.toggle('zoomed')">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+           
             <!-- 角色介紹頁（完整版15個角色） -->
             <div id="characters" class="tab-content">
                 <!-- 中文版角色介紹 -->
@@ -1808,7 +2861,7 @@
                             </div>
                             
                             <div class="character-card">
-                                <h4><img src="icons/butterfly-mask-40.png" ...> Fairy</h4>
+                                <h4><img src="icons/butterfly-mask-40.png" ...> Elf</h4>
                                 <div class="quote">"Water knows a thousand words, but chooses only to flow."</div>
                             </div>
                             
